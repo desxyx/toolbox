@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show:*)",
+      "Bash(where gcc:*)",
+      "Bash(where g++)",
+      "Bash(where cl:*)",
+      "Bash(where clang:*)",
+      "Bash(where go:*)",
+      "Bash(where rustc:*)",
+      "Bash(where choco:*)",
+      "Bash(where scoop:*)",
+      "Bash(where winget:*)",
+      "Bash(winget install:*)",
+      "Bash(C:/msys64/usr/bin/pacman.exe:*)",
+      "Bash(C:/msys64/mingw64/bin/g++.exe:*)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(\"C:/msys64/mingw64/bin/g++.exe\" -O2 -mwindows /c/temp/hello.cpp -o /c/temp/hello.exe)",
+      "Bash(\"C:/msys64/mingw64/bin/g++.exe\" -O2 -mwindows /c/temp/hello.cpp -o /c/temp/hello_out.exe)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(\"C:/msys64/mingw64/bin/g++.exe\" /c/temp/hello.cpp)",
+      "Bash(python:*)",
+      "Bash(export PATH=\"/c/msys64/mingw64/bin:/c/msys64/usr/bin:$PATH\")",
+      "Bash(g++ -x:*)"
+    ]
+  }
+}
