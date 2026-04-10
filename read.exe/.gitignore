@@ -1,0 +1,5 @@
+win/read_gui.exe
+win/build_*.txt
+win/build_stderr.txt
+win/build_stdout.txt
+mac/read
