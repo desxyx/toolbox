@@ -27,39 +27,104 @@
 // ── ignore / text lists (keep in sync with win/main.cpp) ────────────────────
 
 static const char* s_ignoreDirs[] = {
-    ".git", ".idea", ".vscode", "__pycache__", ".pytest_cache",
-    ".mypy_cache", "node_modules", "dist", "build", "target",
-    "bin", "obj", ".venv", "venv", ".cache", ".tox",
-    ".gradle", ".svelte-kit", ".next", "browser-profiles", nullptr
+    // version control
+    ".git",
+    // editors / IDEs
+    ".idea", ".vscode",
+    // Python
+    "__pycache__", ".pytest_cache", ".mypy_cache", ".tox", ".hypothesis", "htmlcov",
+    // JavaScript / Node
+    "node_modules", "bower_components", ".parcel-cache", ".turbo", ".nyc_output",
+    // build outputs
+    "dist", "build", "out", "target", "bin", "obj",
+    // virtual envs
+    ".venv", "venv",
+    // caches
+    ".cache",
+    // Java / Kotlin / Android
+    ".gradle",
+    // frontend frameworks
+    ".svelte-kit", ".next", ".expo", ".nuxt",
+    // iOS / macOS
+    "Pods", "Carthage", "DerivedData",
+    // Swift Package Manager
+    ".build",
+    // Go / PHP / Ruby vendoring
+    "vendor",
+    // Dart / Flutter
+    ".dart_tool",
+    // test coverage
+    "coverage",
+    // misc
+    "browser-profiles", "tmp", "temp",
+    nullptr
 };
 
 static const char* s_binaryExts[] = {
-    ".dll", ".so", ".dylib", ".a", ".lib", ".exe",
-    ".zip", ".tar", ".gz", ".7z", ".rar",
-    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".bmp",
-    ".pdf", ".mp4", ".mov", ".mp3", ".wav", ".avi",
+    // compiled / linked
+    ".dll", ".so", ".dylib", ".a", ".lib", ".exe", ".o",
+    ".pyc", ".pyo", ".class", ".jar", ".war", ".wasm",
+    // archives
+    ".zip", ".tar", ".gz", ".tgz", ".bz2", ".xz", ".7z", ".rar",
+    // images
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".bmp", ".tiff", ".tif",
+    // documents
+    ".pdf",
+    // video / audio
+    ".mp4", ".mov", ".avi", ".mkv", ".mp3", ".wav", ".flac", ".aac",
+    // databases
     ".db", ".sqlite", ".sqlite3", ".wal", ".ldb",
+    // data / binary blobs
     ".pak", ".dat", ".bin",
+    // fonts
     ".woff", ".woff2", ".ttf", ".otf",
+    // mobile / desktop packages
+    ".apk", ".ipa", ".dmg", ".pkg", ".msi", ".deb", ".rpm",
+    // editor swap files
+    ".swp", ".swo",
     nullptr
 };
 
 static const char* s_textExts[] = {
-    ".txt", ".md", ".py", ".json", ".yml", ".yaml",
-    ".ini", ".cfg", ".toml", ".csv", ".xml",
+    // plain text / docs
+    ".txt", ".md", ".mdx", ".rst",
+    // Python
+    ".py", ".pyi",
+    // data / config
+    ".json", ".jsonc", ".yml", ".yaml", ".ini", ".cfg", ".toml",
+    ".csv", ".xml", ".conf", ".properties", ".plist",
+    // web
     ".html", ".htm", ".css", ".js", ".ts", ".tsx", ".jsx",
-    ".c", ".h", ".cpp", ".hpp", ".cs", ".java",
-    ".kt", ".go", ".rs", ".rb", ".php",
-    ".sh", ".bash", ".zsh", ".ps1",
-    ".r", ".swift", ".pl", ".lua",
-    ".dart", ".scala", ".hs", ".inc", ".vue", ".svelte", ".svg",
-    ".env", ".lock", ".mod", ".sum", ".tf", ".hcl", ".proto",
+    ".cjs", ".mjs", ".vue", ".svelte", ".svg",
+    // C family
+    ".c", ".h", ".cpp", ".hpp", ".mm", ".m",
+    // JVM
+    ".cs", ".java", ".kt", ".kts", ".scala",
+    // systems
+    ".go", ".rs",
+    // scripting
+    ".rb", ".php", ".pl", ".lua", ".r",
+    // shell
+    ".sh", ".bash", ".zsh", ".fish", ".ps1", ".bat", ".cmd",
+    // mobile / desktop
+    ".swift", ".dart",
+    // functional / other
+    ".hs", ".ex", ".exs", ".erl", ".clj", ".ml",
+    // infra / schemas
+    ".tf", ".hcl", ".proto", ".graphql", ".gql", ".prisma", ".sol",
+    // misc
+    ".env", ".lock", ".mod", ".sum", ".inc", ".feature",
     nullptr
 };
 
 static const char* s_textNames[] = {
-    "Dockerfile", "Makefile", "README", "LICENSE", ".gitignore",
-    ".npmrc", ".editorconfig", nullptr
+    "Dockerfile", ".dockerignore",
+    "Makefile", "Procfile",
+    "README", "LICENSE", "CHANGELOG",
+    ".gitignore", ".gitattributes",
+    ".npmrc", ".nvmrc", ".node-version",
+    ".editorconfig", ".prettierrc", ".eslintrc", ".babelrc",
+    nullptr
 };
 
 // ── helpers ──────────────────────────────────────────────────────────────────

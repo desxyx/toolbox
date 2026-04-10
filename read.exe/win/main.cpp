@@ -140,39 +140,104 @@ static bool NameInList(const wchar_t* const* list, const std::wstring& name)
 }
 
 static const wchar_t* s_ignoreDirs[] = {
-    L".git", L".idea", L".vscode", L"__pycache__", L".pytest_cache",
-    L".mypy_cache", L"node_modules", L"dist", L"build", L"target",
-    L"bin", L"obj", L".venv", L"venv", L".cache", L".tox",
-    L".gradle", L".svelte-kit", L".next", L"browser-profiles", nullptr
+    // version control
+    L".git",
+    // editors / IDEs
+    L".idea", L".vscode",
+    // Python
+    L"__pycache__", L".pytest_cache", L".mypy_cache", L".tox", L".hypothesis", L"htmlcov",
+    // JavaScript / Node
+    L"node_modules", L"bower_components", L".parcel-cache", L".turbo", L".nyc_output",
+    // build outputs
+    L"dist", L"build", L"out", L"target", L"bin", L"obj",
+    // virtual envs
+    L".venv", L"venv",
+    // caches
+    L".cache",
+    // Java / Kotlin / Android
+    L".gradle",
+    // frontend frameworks
+    L".svelte-kit", L".next", L".expo", L".nuxt",
+    // iOS / macOS
+    L"Pods", L"Carthage", L"DerivedData",
+    // Swift Package Manager
+    L".build",
+    // Go / PHP / Ruby vendoring
+    L"vendor",
+    // Dart / Flutter
+    L".dart_tool",
+    // test coverage
+    L"coverage",
+    // misc
+    L"browser-profiles", L"tmp", L"temp",
+    nullptr
 };
 
 static const wchar_t* s_binaryExts[] = {
-    L".dll", L".so", L".dylib", L".a", L".lib", L".exe",
-    L".zip", L".tar", L".gz", L".7z", L".rar",
-    L".png", L".jpg", L".jpeg", L".gif", L".webp", L".ico", L".bmp",
-    L".pdf", L".mp4", L".mov", L".mp3", L".wav", L".avi",
+    // compiled / linked
+    L".dll", L".so", L".dylib", L".a", L".lib", L".exe", L".o",
+    L".pyc", L".pyo", L".class", L".jar", L".war", L".wasm",
+    // archives
+    L".zip", L".tar", L".gz", L".tgz", L".bz2", L".xz", L".7z", L".rar",
+    // images
+    L".png", L".jpg", L".jpeg", L".gif", L".webp", L".ico", L".bmp", L".tiff", L".tif",
+    // documents
+    L".pdf",
+    // video / audio
+    L".mp4", L".mov", L".avi", L".mkv", L".mp3", L".wav", L".flac", L".aac",
+    // databases
     L".db", L".sqlite", L".sqlite3", L".wal", L".ldb",
+    // data / binary blobs
     L".pak", L".dat", L".bin",
+    // fonts
     L".woff", L".woff2", L".ttf", L".otf",
+    // mobile / desktop packages
+    L".apk", L".ipa", L".dmg", L".pkg", L".msi", L".deb", L".rpm",
+    // editor swap files
+    L".swp", L".swo",
     nullptr
 };
 
 static const wchar_t* s_textExts[] = {
-    L".txt", L".md", L".py", L".json", L".yml", L".yaml",
-    L".ini", L".cfg", L".toml", L".csv", L".xml",
+    // plain text / docs
+    L".txt", L".md", L".mdx", L".rst",
+    // Python
+    L".py", L".pyi",
+    // data / config
+    L".json", L".jsonc", L".yml", L".yaml", L".ini", L".cfg", L".toml",
+    L".csv", L".xml", L".conf", L".properties", L".plist",
+    // web
     L".html", L".htm", L".css", L".js", L".ts", L".tsx", L".jsx",
-    L".c", L".h", L".cpp", L".hpp", L".cs", L".java",
-    L".kt", L".go", L".rs", L".rb", L".php",
-    L".sh", L".bash", L".zsh", L".ps1",
-    L".r", L".swift", L".pl", L".lua",
-    L".dart", L".scala", L".hs", L".inc", L".vue", L".svelte", L".svg",
-    L".env", L".lock", L".mod", L".sum", L".tf", L".hcl", L".proto",
+    L".cjs", L".mjs", L".vue", L".svelte", L".svg",
+    // C family
+    L".c", L".h", L".cpp", L".hpp", L".mm", L".m",
+    // JVM
+    L".cs", L".java", L".kt", L".kts", L".scala",
+    // systems
+    L".go", L".rs",
+    // scripting
+    L".rb", L".php", L".pl", L".lua", L".r",
+    // shell
+    L".sh", L".bash", L".zsh", L".fish", L".ps1", L".bat", L".cmd",
+    // mobile / desktop
+    L".swift", L".dart",
+    // functional / other
+    L".hs", L".ex", L".exs", L".erl", L".clj", L".ml",
+    // infra / schemas
+    L".tf", L".hcl", L".proto", L".graphql", L".gql", L".prisma", L".sol",
+    // misc
+    L".env", L".lock", L".mod", L".sum", L".inc", L".feature",
     nullptr
 };
 
 static const wchar_t* s_textNames[] = {
-    L"Dockerfile", L"Makefile", L"README", L"LICENSE", L".gitignore",
-    L".npmrc", L".editorconfig", nullptr
+    L"Dockerfile", L".dockerignore",
+    L"Makefile", L"Procfile",
+    L"README", L"LICENSE", L"CHANGELOG",
+    L".gitignore", L".gitattributes",
+    L".npmrc", L".nvmrc", L".node-version",
+    L".editorconfig", L".prettierrc", L".eslintrc", L".babelrc",
+    nullptr
 };
 
 static std::wstring ExtOf(const std::wstring& name)
